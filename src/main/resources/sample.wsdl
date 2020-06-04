@@ -1,13 +1,13 @@
-<wsdl:definitions targetNamespace="http://com.sample/soap/webservice"
+<wsdl:definitions targetNamespace="http://sample.com/soap/webservice"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-	xmlns:tns="http://com.sample/soap/webservice"
+	xmlns:tns="http://sample.com/soap/webservice"
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:ns3="http://schemas.xmlsoap.org/soap/http"
-	xmlns:ns2="http://com.sample/schema/sample">
+	xmlns:ns2="http://sample.com/schema/sample">
 
 	<wsdl:types>
-		<xs:schema targetNamespace="http://com.sample/schema/sample" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+		<xs:schema targetNamespace="http://sample.com/schema/sample" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 			<xs:element name="ProductRequestElement">
 				<xs:complexType>
 					<xs:sequence>
