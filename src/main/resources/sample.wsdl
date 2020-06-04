@@ -1,11 +1,10 @@
-<wsdl:definitions targetNamespace="http://config.sample.test.com/"
+<wsdl:definitions targetNamespace="http://com.sample/soap/webservice"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-	xmlns:tns="http://config.sample.test.com/"
+	xmlns:tns="http://com.sample/soap/webservice"
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:ns3="http://schemas.xmlsoap.org/soap/http"
-	xmlns:ns2="http://com.sample/schema/sample"
-	xmlns:ns1="http://com.sample/soap/webservice">
+	xmlns:ns2="http://com.sample/schema/sample">
 
 	<wsdl:types>
 		<xs:schema targetNamespace="http://com.sample/schema/sample" xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -45,7 +44,7 @@
 	<wsdl:binding name="ProductSoapBinding"	type="tns:Product">
 		<soap:binding style="document"	transport="http://schemas.xmlsoap.org/soap/http" />
 		<wsdl:operation name="GetProduct">
-			<soap:operation soapAction="" style="document" />
+			<soap:operation soapAction="GetProduct" style="document" />
 			<wsdl:input name="GetProduct">
 				<soap:body use="literal" />
 			</wsdl:input>

@@ -76,7 +76,10 @@
 							<wsdlOptions>
 								<wsdlOption>
 									<wsdl>${project.basedir}/src/main/resources/sample.wsdl</wsdl>
-
+									<extraargs>
+						                <!-- <extraarg>-impl</extraarg> -->
+						                <extraarg>-verbose</extraarg>
+						            </extraargs>
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>
