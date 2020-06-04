@@ -1,21 +1,21 @@
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
-	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:soap="http:/schmas.xmlsoap.org/wsdl/soap/" 
-	targetNamespace="http://com.sample/soap/webservice"  
-	xmlns:prod="http://com.sample/schema/sample"
-	xmlns:tns="http://com.sample/soap/webservice"> 
-	
-	<wsdl:types>
+<wsdl:definitions targetNamespace="http://config.sample.test.com/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://config.sample.test.com/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:ns3="http://schemas.xmlsoap.org/soap/http"
+	xmlns:ns2="http://com.sample/schema/sample"
+	xmlns:ns1="http://com.sample/soap/webservice">
 
-		<xs:schema targetNamespace="http://com.sample/schema/sample">
+	<wsdl:types>
+		<xs:schema targetNamespace="http://com.sample/schema/sample" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 			<xs:element name="ProductRequestElement">
 				<xs:complexType>
-					<xs:all>
+					<xs:sequence>
 						<xs:element name="productId" type="xs:string" />
-					</xs:all>
+					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			
 			<xs:element name="ProductResponseElement">
 				<xs:complexType>
 					<xs:all>
@@ -26,41 +26,38 @@
 				</xs:complexType>
 			</xs:element>
 		</xs:schema>
-		
 	</wsdl:types>
 	
-	<wsdl:message name="ProductRequestMsgType">
-		<wsdl:part element="prod:ProductRequestElement" name="request" />
+	<wsdl:message name="GetProduct">
+		<wsdl:part element="ns2:ProductRequestElement"	name="request" />
 	</wsdl:message>
-	
-	<wsdl:message name="ProductResponseMsgType">
-		<wsdl:part element="prod:ProductResponseElement" name="response" />
+	<wsdl:message name="GetProductResponse">
+		<wsdl:part element="ns2:ProductResponseElement"	name="response" />
 	</wsdl:message>
-	
+
 	<wsdl:portType name="Product">
 		<wsdl:operation name="GetProduct">
-			<wsdl:input name="ProductRequest" message="tns:ProductRequestMsgType"/>
-			<wsdl:output name="ProductResponse" message="tns:ProductResponseMsgType"/>
+			<wsdl:input message="tns:GetProduct" name="GetProduct" />
+			<wsdl:output message="tns:GetProductResponse"	name="GetProductResponse" />
 		</wsdl:operation>
-	
 	</wsdl:portType>
 
-	<wsdl:binding name="ProductServiceBinding" type="tns:Product" >
-		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+	<wsdl:binding name="ProductSoapBinding"	type="tns:Product">
+		<soap:binding style="document"	transport="http://schemas.xmlsoap.org/soap/http" />
 		<wsdl:operation name="GetProduct">
-			<soap:operation soapAction="GetProduct" />
-			<wsdl:input name="ProductRequest">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="GetProduct">
 				<soap:body use="literal" />
 			</wsdl:input>
-			<wsdl:output name="ProductResponse">
+			<wsdl:output name="GetProductResponse">
 				<soap:body use="literal" />
 			</wsdl:output>
 		</wsdl:operation>
 	</wsdl:binding>
-
+	
 	<wsdl:service name="ProductService">
-		<wsdl:port binding="tns:ProductServiceBinding" name="ProductPort">
-			<soap:address location="http://somesomethings.com/services/ProductService" />
+		<wsdl:port binding="tns:ProductSoapBinding"	name="Product">
+			<soap:address location="http://localhost:8099/maven-spring-soap-cxf/services/ProductService" />
 		</wsdl:port>
 	</wsdl:service>
 

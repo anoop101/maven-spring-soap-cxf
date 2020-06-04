@@ -18,7 +18,8 @@
 	
 	<context:component-scan base-package="com.test.sample.config"></context:component-scan>
 
-	<jaxws:endpoint id="productService" implementorClass="com.test.sample.config.ProductImpl" address="/"/>
+	<jaxws:endpoint id="productService" implementorClass="com.test.sample.config.ProductImpl" address="/"
+	wsdlLocation="classpath:sample.wsdl" />
 
 
 </beans>
